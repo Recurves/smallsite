@@ -1,0 +1,24 @@
+name: Deploy to Server
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out Repo
+      uses: actions/checkout@v3
+
+    - name: Deploy to the server
+      uses: appleboy/ssh-action@master
+      with:
+        host: 50.17.133.226
+        username: ec2-user
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd /var/www/brandon.thebyrnefamily.ca
+          git pull origin main
