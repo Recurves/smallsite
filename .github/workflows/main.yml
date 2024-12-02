@@ -21,4 +21,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd /var/www/brandon.thebyrnefamily.ca
-          git pull origin main
+          git pull
